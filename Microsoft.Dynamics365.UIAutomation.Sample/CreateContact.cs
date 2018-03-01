@@ -21,6 +21,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Sample
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+                xrmBrowser.GuidedHelp.CloseTrialBubble();
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 xrmBrowser.ThinkTime(500);

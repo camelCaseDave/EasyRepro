@@ -36,6 +36,40 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             }
         }
 
+        public BrowserCommandResult<bool> CloseTrialBubble()
+        {
+            return this.Execute(GetOptions("Close Trial Bubble"), driver =>
+            {
+                bool returnValue = false;
+
+                if (IsEnabled)
+                {
+                    driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.TrialWelcome.BubbleOverlay]), new TimeSpan(0, 0, 15), d =>
+                    {
+                        var allMarsElements = driver
+                            .FindElement(By.XPath(Elements.Xpath[Reference.TrialWelcome.BubbleOverlay]))
+                            .FindElements(By.XPath(".//*"));
+
+                        foreach (var element in allMarsElements)
+                        {
+                            var buttonId = driver.ExecuteScript("return arguments[0].id;", element).ToString();
+
+                            if (buttonId.Equals(Elements.ElementId[Reference.TrialWelcome.Close], StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                driver.WaitUntilClickable(By.Id(buttonId), new TimeSpan(0, 0, 5));
+
+                                element.Click();
+                            }
+                        }
+
+                        returnValue = true;
+                    });
+                }
+
+                return returnValue;
+            });
+        }
+
         /// <summary>
         /// Closes the Guided Help
         /// </summary>

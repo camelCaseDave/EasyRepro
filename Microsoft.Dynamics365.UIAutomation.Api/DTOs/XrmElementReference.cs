@@ -50,6 +50,9 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             { "GuidedHelp_ButBegin"       , "id(\"butBegin\")"},
             { "GuidedHelp_ButtonClose", "id(\"buttonClose\")" },
 
+            //TrialWelcome
+            { "TrialWelcome_BubbleOverlay", "id(\"stepBubbleContainer\")" },
+            { "TrialWelcome_ButtonClose", "id(\xbutton\")" },
 
             //Frames
             { "Frame_ContentPanel"       , "id(\"crmContentPanel\")"},
@@ -237,6 +240,9 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             //GuidedHelp
             { "GuidedHelp_Close"       , "closeButton"},
+
+            //TrialBubble
+            { "TrialWelcome_ButtonClose", "xbutton" },
 
             //Grid
             { "Grid_PrimaryField"       , "gridBodyTable_primaryField_"},
@@ -589,6 +595,13 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             public static string Close = "GuidedHelp_Close";
 
         }
+
+        public static class TrialWelcome
+        {
+            public static string BubbleOverlay = "TrialWelcome_BubbleOverlay";
+            public static string Close = "TrialWelcome_ButtonClose";
+        }
+
         public static class Notification
         {
             public static string AppMessageBar = "Notification_AppMessageBar";
